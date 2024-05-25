@@ -21,7 +21,8 @@ connect_to_public_instance() {
 }
 
 connect_to_private_instance() {
-  ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@"$PRIVATE_IP"
+ # ssh -i "$KEY_PATH" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@"$PRIVATE_IP"
+   ssh -i "$KEY_PATH" -J ubuntu@"$PUBLIC_IP" ubuntu@"$PRIVATE_IP"
 }
 
 run_command_on_private_instance() {
@@ -35,3 +36,4 @@ elif [ -z "$COMMAND" ]; then
 else
   run_command_on_private_instance
 fi
+
