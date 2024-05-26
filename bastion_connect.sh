@@ -33,7 +33,7 @@ function connect_to_private_instance() {
 }
 
 function run_command_private() {
-	ssh -i "$MACHINE_PRIVATE_KEY" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@"$PRIVATE_IP" "$COMMAND"    
+	ssh -i "$MACHINE_PRIVATE_KEY" -o ProxyCommand="ssh -i $KEY_PATH -W %h:%p ubuntu@$PUBLIC_IP" ubuntu@"$PRIVATE_IP" "$COMMAND"
 #ssh -t -i "$KEY_PATH" ubuntu@"$PUBLIC_IP" "ssh -t -i $MACHINE_PRIVATE_KEY ubuntu@$PRIVATE_IP '$COMMAND'"
 }
 
