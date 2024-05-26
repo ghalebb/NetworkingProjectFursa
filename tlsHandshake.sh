@@ -62,6 +62,11 @@ echo "$MASTER_KEY" > master_key.txt
 
 ENCRYPTED_MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in master_key.txt -outform DER server_cert.pem | base64 -w 0)
 
+if [ -z "$ENCRYPTED_MASTER_KEY" ]; then
+    print_message "Failed to encrypt master key."
+    exit 1
+fi
+
 # Step 4: Exchange keys with the server
 print_message "Exchanging keys with the server..."
 KEY_EXCHANGE_RESPONSE=$(curl -s -X POST "http://$SERVER_IP:8080/keyexchange" \
