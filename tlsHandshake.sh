@@ -36,7 +36,7 @@ print_message "Received Server Hello. Session ID: $SESSION_ID"
 
 # Step 2: Store and verify server certificate
 print_message "Storing and verifying server certificate..."
-echo "$SERVER_CERT" | base64 -d > server_cert.pem
+echo "$SERVER_CERT" > server_cert.pem
 
 # Download CA certificate
 wget -q -O cert_ca_aws.pem https://alonitac.github.io/DevOpsTheHardWay/networking_project/cert-ca-aws.pem
