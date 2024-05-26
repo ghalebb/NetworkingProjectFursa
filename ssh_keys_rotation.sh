@@ -7,17 +7,45 @@ if [ -z "$1" ]; then
 fi
 
 PRIVATE_INSTANCE_IP=$1
-NEW_KEY_NAME=new_key
-NEW_KEY_PATH=~/.ssh/$NEW_KEY_NAME
+KEY_PATH=${KEY_PATH:-~/key.pem}
+NEW_KEY_PATH=~/new_key.pem
+NEW_KEY_PUB_PATH=~/new_key.pem.pub
 
-# Generate a new key pair
+# Generate a new SSH key pair
 ssh-keygen -t rsa -b 2048 -f $NEW_KEY_PATH -q -N ""
 
+# Extract the new public key
+NEW_PUBLIC_KEY=$(cat $NEW_KEY_PUB_PATH)
+
 # Copy the new public key to the private instance
-ssh ubuntu@$PRIVATE_INSTANCE_IP "mkdir -p ~/.ssh && echo $(cat ${NEW_KEY_PATH}.pub) > ~/.ssh/authorized_keys"
+echo "Adding the new public key to the private instance..."
+ssh -i "$KEY_PATH" ubuntu@"$PRIVATE_INSTANCE_IP" "echo $NEW_PUBLIC_KEY >> ~/.ssh/authorized_keys"
+if [ $? -ne 0 ]; then
+   echo "Failed to add the new key"
+   exit 1
+fi
 
-# Test the new key connection
-ssh -i $NEW_KEY_PATH ubuntu@$PRIVATE_INSTANCE_IP "echo 'New key works!'"
+# Verify the new key works
+echo "Verifying the new key..."
+ssh -i "$NEW_KEY_PATH" ubuntu@"$PRIVATE_INSTANCE_IP" "exit"
+if [ $? -ne 0 ]; then
+  echo "Failed to authenticate with the new key"
+  exit 1
+fi
 
-# Inform the user to update their key paths
-echo "Key rotation complete. Update your scripts to use the new key at $NEW_KEY_PATH"
+# Remove the old key from the authorized keys on the private instance
+echo "Removing the old public key from the private instance..."
+ssh -i "$NEW_KEY_PATH" ubuntu@"$PRIVATE_INSTANCE_IP" "$NEW_PUBLIC_KEY > ~/.ssh/authorized_keys"
+
+# Verify the old key no longer works
+echo "Verifying the old key no longer works..."
+ssh -i "$KEY_PATH" ubuntu@"$PRIVATE_INSTANCE_IP" "exit"
+if [ $? -eq 0 ]; then
+  echo "Old key still works, failed to remove it"
+  exit 1
+fi
+
+# Replace the old key with the new key locally
+mv $NEW_KEY_PATH ~/key.pem
+
+echo "SSH key rotation completed successfully"
