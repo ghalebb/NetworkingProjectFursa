@@ -1,3 +1,11 @@
+#!/bin/bash
+
+# Check if server IP is provided
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <server-ip>"
+    exit 1
+fi
+
 SERVER_IP=$1
 
 # Step 1: Send Client Hello
@@ -5,7 +13,17 @@ echo "Sending Client Hello..."
 CLIENT_HELLO_RESPONSE=$(curl -s -X POST "http://$SERVER_IP:8080/clienthello" \
     -H "Content-Type: application/json" \
     -d '{
-@@ -32,43 +27,43 @@ fi
+        "version": "1.3",
+        "ciphersSuites": ["TLS_AES_128_GCM_SHA256", "TLS_CHACHA20_POLY1305_SHA256"],
+        "message": "Client Hello"
+    }')
+
+if [ $? -ne 0 ]; then
+    print_message "Failed to send Client Hello."
+    exit 1
+fi
+
+# Extract session ID and server certificate from the response
 SESSION_ID=$(echo "$CLIENT_HELLO_RESPONSE" | jq -r '.sessionID')
 SERVER_CERT=$(echo "$CLIENT_HELLO_RESPONSE" | jq -r '.serverCert')
 
@@ -49,7 +67,9 @@ echo "Exchanging keys with the server..."
 KEY_EXCHANGE_RESPONSE=$(curl -s -X POST "http://$SERVER_IP:8080/keyexchange" \
     -H "Content-Type: application/json" \
     -d "{
-@@ -78,22 +73,19 @@ KEY_EXCHANGE_RESPONSE=$(curl -s -X POST "http://$SERVER_IP:8080/keyexchange" \
+        \"sessionID\": \"$SESSION_ID\",
+        \"masterKey\": \"$ENCRYPTED_MASTER_KEY\",
+        \"sampleMessage\": \"Hi server, please encrypt me and send to client!\"
     }")
 
 if [ $? -ne 0 ]; then
