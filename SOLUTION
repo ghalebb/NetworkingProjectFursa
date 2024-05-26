@@ -11,59 +11,10 @@ Default gateway IP
 
 DHCP IP allocation sys-logs
 -------------------
-2024-05-21T17:32:28.827412+00:00 ip-10-0-0-202 dhcpcd[430]: dhcpcd-10.0.6 starting
-2024-05-21T17:32:28.827415+00:00 ip-10-0-0-202 dhcpcd[433]: DUID 00:01:00:01:2d:df:97:25:02:43:d3:ca:20:d1
-2024-05-21T17:32:28.827419+00:00 ip-10-0-0-202 dhcpcd[433]: enX0: IAID d3:ca:20:d1
 2024-05-21T17:32:28.827422+00:00 ip-10-0-0-202 dhcpcd[433]: enX0: soliciting a DHCP lease
 2024-05-21T17:32:28.827426+00:00 ip-10-0-0-202 dhcpcd[433]: enX0: offered 10.0.0.202 from 10.0.0.1
 2024-05-21T17:32:28.827432+00:00 ip-10-0-0-202 dhcpcd[433]: enX0: leased 10.0.0.202 for 3600 seconds
-2024-05-21T17:32:28.827436+00:00 ip-10-0-0-202 dhcpcd[433]: enX0: adding route to 10.0.0.0/24
-2024-05-21T17:32:28.827441+00:00 ip-10-0-0-202 dhcpcd[433]: enX0: adding default route via 10.0.0.1
 2024-05-21T17:32:28.827445+00:00 ip-10-0-0-202 dhcpcd[433]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only enX0
-2024-05-21T17:32:28.827554+00:00 ip-10-0-0-202 systemd-networkd[503]: enX0: DHCPv4 address 10.0.0.202/24, gateway 10.0.0.1 acquired from 10.0.0.1
-2024-05-22T11:37:00.480476+00:00 ip-10-0-0-202 dhcpcd[421]: dhcpcd-10.0.6 starting
-2024-05-22T11:37:00.480488+00:00 ip-10-0-0-202 dhcpcd[424]: DUID 00:01:00:01:2d:df:97:25:02:43:d3:ca:20:d1
-2024-05-22T11:37:00.480493+00:00 ip-10-0-0-202 dhcpcd[424]: enX0: IAID d3:ca:20:d1
-2024-05-22T11:37:00.480496+00:00 ip-10-0-0-202 dhcpcd[424]: enX0: soliciting a DHCP lease
-2024-05-22T11:37:00.480500+00:00 ip-10-0-0-202 dhcpcd[424]: enX0: offered 10.0.0.202 from 10.0.0.1
-2024-05-22T11:37:00.480504+00:00 ip-10-0-0-202 dhcpcd[424]: enX0: leased 10.0.0.202 for 3600 seconds
-2024-05-22T11:37:00.480507+00:00 ip-10-0-0-202 dhcpcd[424]: enX0: adding route to 10.0.0.0/24
-2024-05-22T11:37:00.480513+00:00 ip-10-0-0-202 dhcpcd[424]: enX0: adding default route via 10.0.0.1
-2024-05-22T11:37:00.480517+00:00 ip-10-0-0-202 dhcpcd[424]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only enX0
-2024-05-22T11:37:00.480585+00:00 ip-10-0-0-202 systemd-networkd[449]: enX0: DHCPv4 address 10.0.0.202/24, gateway 10.0.0.1 acquired from 10.0.0.1
-2024-05-22T18:20:09.088876+00:00 ip-10-0-0-202 dhcpcd[424]: dhcpcd-10.0.6 starting
-2024-05-22T18:20:09.088879+00:00 ip-10-0-0-202 dhcpcd[427]: DUID 00:01:00:01:2d:df:97:25:02:43:d3:ca:20:d1
-2024-05-22T18:20:09.088883+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: IAID d3:ca:20:d1
-2024-05-22T18:20:09.088887+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: soliciting a DHCP lease
-2024-05-22T18:20:09.088893+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: offered 10.0.0.202 from 10.0.0.1
-2024-05-22T18:20:09.088897+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: leased 10.0.0.202 for 3600 seconds
-2024-05-22T18:20:09.088900+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: adding route to 10.0.0.0/24
-2024-05-22T18:20:09.088905+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: adding default route via 10.0.0.1
-2024-05-22T18:20:09.088908+00:00 ip-10-0-0-202 dhcpcd[427]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only enX0
-2024-05-22T18:20:09.088980+00:00 ip-10-0-0-202 systemd-networkd[452]: enX0: DHCPv4 address 10.0.0.202/24, gateway 10.0.0.1 acquired from 10.0.0.1
-2024-05-22T18:45:38.799605+00:00 ip-10-0-0-202 systemd-networkd[452]: enX0: DHCPv6 lease lost
-2024-05-22T18:45:39.623926+00:00 ip-10-0-0-202 systemd-networkd[2722]: enX0: DHCPv4 address 10.0.0.202/24, gateway 10.0.0.1 acquired from 10.0.0.1
-2024-05-23T08:08:17.974146+00:00 ip-10-0-0-202 dhcpcd[424]: dhcpcd-10.0.6 starting
-2024-05-23T08:08:17.974150+00:00 ip-10-0-0-202 dhcpcd[427]: DUID 00:01:00:01:2d:df:97:25:02:43:d3:ca:20:d1
-2024-05-23T08:08:17.974154+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: IAID d3:ca:20:d1
-2024-05-23T08:08:17.974158+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: soliciting a DHCP lease
-2024-05-23T08:08:17.974162+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: offered 10.0.0.202 from 10.0.0.1
-2024-05-23T08:08:17.974168+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: leased 10.0.0.202 for 3600 seconds
-2024-05-23T08:08:17.974171+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: adding route to 10.0.0.0/24
-2024-05-23T08:08:17.974175+00:00 ip-10-0-0-202 dhcpcd[427]: enX0: adding default route via 10.0.0.1
-2024-05-23T08:08:17.974178+00:00 ip-10-0-0-202 dhcpcd[427]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only enX0
-2024-05-23T08:08:17.974252+00:00 ip-10-0-0-202 systemd-networkd[447]: enX0: DHCPv4 address 10.0.0.202/24, gateway 10.0.0.1 acquired from 10.0.0.1
-2024-05-25T17:25:22.500634+00:00 ip-10-0-0-202 dhcpcd[580]: dhcpcd-10.0.6 starting
-2024-05-25T17:25:22.500638+00:00 ip-10-0-0-202 dhcpcd[583]: DUID 00:01:00:01:2d:df:97:25:02:43:d3:ca:20:d1
-2024-05-25T17:25:22.500642+00:00 ip-10-0-0-202 dhcpcd[583]: enX0: IAID d3:ca:20:d1
-2024-05-25T17:25:22.500646+00:00 ip-10-0-0-202 dhcpcd[583]: enX0: soliciting a DHCP lease
-2024-05-25T17:25:22.500649+00:00 ip-10-0-0-202 dhcpcd[583]: enX0: offered 10.0.0.202 from 10.0.0.1
-2024-05-25T17:25:22.500653+00:00 ip-10-0-0-202 dhcpcd[583]: enX0: leased 10.0.0.202 for 3600 seconds
-2024-05-25T17:25:22.500659+00:00 ip-10-0-0-202 dhcpcd[583]: enX0: adding route to 10.0.0.0/24
-2024-05-25T17:25:22.500662+00:00 ip-10-0-0-202 dhcpcd[583]: enX0: adding default route via 10.0.0.1
-2024-05-25T17:25:22.500666+00:00 ip-10-0-0-202 dhcpcd[583]: control command: /usr/sbin/dhcpcd --dumplease --ipv4only enX0
-2024-05-25T17:25:22.500743+00:00 ip-10-0-0-202 systemd-networkd[607]: enX0: DHCPv4 address 10.0.0.202/24, gateway 10.0.0.1 acquired from 10.0.0.1
-
 
 
 
@@ -75,4 +26,26 @@ traceroute to 10.0.1.20 (10.0.1.20), 30 hops max, 60 byte packets
 
 DNS queries from the private instance
 -------------------
-<answer-here>
+In some configurations, DNS queries from private instances can be forwarded to a public DNS server (like Google DNS or OpenDNS) through the VPC's DNS resolver or through a custom DNS forwarder setup.
+
+ubuntu@ip-10-0-1-233:~$ dig google.com
+
+; <<>> DiG 9.18.24-0ubuntu5-Ubuntu <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 27866
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		69	IN	A	142.250.191.174
+
+;; Query time: 1 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Sun May 26 13:58:27 UTC 2024
+;; MSG SIZE  rcvd: 55
+
